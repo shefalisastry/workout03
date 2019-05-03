@@ -10,13 +10,13 @@
 #### This Binomial package calculates the probabilities of a Binomial random variable because it allows us to find the number of successes in a fixed number of random trials performed under identical conditions (assuming a constant probability of success on each trial).
 
 ## Installation
-##### development version from GitHub:
+#### Development version from GitHub:
 `install.packages("devtools")` 
 
-##### install "binomial" (without vignettes)
+##### Install "binomial" (without vignettes)
 `devtools::install_github("shefalisastry/workout03")`
 
-##### install "cointoss" (with vignettes)
+##### Install "cointoss" (with vignettes)
 `devtools::install_github("shefalisastry/workout03", build_vignettes = TRUE)`
 
 ## Usage: What this Package Contains
