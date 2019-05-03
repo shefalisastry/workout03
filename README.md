@@ -10,7 +10,7 @@
 #### This Binomial package calculates the probabilities of a Binomial random variable because it allows us to find the number of successes in a fixed number of random trials performed under identical conditions (assuming a constant probability of success on each trial).
 
 ## Installation
-#### Development version from GitHub:
+##### Development version from GitHub:
 `install.packages("devtools")` 
 
 ##### Install "binomial" (without vignettes)
