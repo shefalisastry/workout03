@@ -1,6 +1,6 @@
 # workout03
 
-## This Workout was created for the STAT 133 class. The work here is a package called `binomial`. which is created for our Workout 3 assignment.
+## This Workout was created for the STAT 133 class. The work here is a package called `binomial` which I created for our Workout 3 assignment.
 
 ## An Introduction to the Binomial Random Variable
  
