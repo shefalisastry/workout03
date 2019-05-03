@@ -1,4 +1,5 @@
-# workout03
+# Workout 03
+## Submission by: Shefali Sastry
 
 ## This Workout was created for the STAT 133 class. The work here is a package called `binomial` which I created for our Workout 3 assignment.
 
