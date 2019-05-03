@@ -1,0 +1,295 @@
+---
+title: "Introduction to Binomial Package"
+author: "shefali sastry"
+date: "`4/30/2019`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{my-vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(binomial)
+```
+
+# Binomial Package
+
+## An Introduction to the Binomial Random Variable
+ 
+This Binomial package calculates probabilities of a Binomial random variable because it allows us to calculate the probabilities to find the number of successes in a fixed number of random trials performed under identical conditions (assuming a constant probability of success on each trial).
+
+
+## What this package contains
+
+This specific package contains 15 functions that the user can use, 10 of which are main functions, and 5 of which are method functions that support these main functions due to their plotting capabilities. Here is a list of what is provided:
+
+
+* Main Functions
+    * `bin_choose()`
+    * `bin_probability()`
+    * `bin_distribution()`, Method: `plot.bindis()`
+    * `bin_cumulative()`, Method: `plot.bincum()`
+    * `bin_var()`, Method: `print.binvar()`
+    * Summary/Auxiliary functions: `bin_mean()`, `bin_variance()`, `bin_mode()`, `bin_skewness()`, `bin_kurtosis()`
+    
+* Method Functions
+    * `plot.bindis()`, 
+    * `plot.bincum()`
+    * `print.binvar()`
+    * `summary.binvar()`
+    * `print.summary.binvar()`
+```{r echo=FALSE}
+## Check Functions
+# These functions will not be called by the user as they are primarily used to check for valid values.
+# Function check_prob()
+#This function tests whether an input prob is a valid probability value
+check_prob <- function(prob) {
+  if (prob > 1 | prob < 0) {
+    stop('p has to be a number betwen 0 and 1')
+  }
+  else {
+    return(TRUE)
+  }
+}
+
+# Function check_trials()
+# This function tests whether an input trials is a valid value for a number of trials (i.e. n is a non-negative integer)
+check_trials <- function(trials){
+  if (trials <0) {
+    stop('invalid trials value')
+  } else {
+    return(TRUE)
+  }
+}
+
+# Function check_success()
+# This function tests the success input is a valid value for number of successes
+check_success <- function(success, trials){
+  if(is.vector(success) == TRUE & sum(success <= trials) == length(success))
+    return(TRUE)
+  else
+    stop('invalid success value')
+}
+```
+
+## How to Apply These Functions
+
+### bin_choose()
+###### This function calculates the number of combinations in which k successes can occur in n trials.
+```{r}
+bin_choose(n = 5, k = 2)
+bin_choose(5, 0)
+```
+
+
+### bin_probability()
+###### This function calculates the probability of getting k successes in n trials assuming a certain probability of success.
+```{r}
+# probability of getting 2 successes in 5 trials
+# (assuming prob of success = 0.5)
+bin_probability(success = 2, trials = 5, prob = 0.5)
+
+# 55 heads in 100 tosses of a loaded coin with 45% chance of heads
+bin_probability(success = 55, trials = 100, prob = 0.45)
+```
+
+### bin_distribution()
+###### This function calculates the distribution of the probabilities for each number of successes.
+```{r}
+# binomial probability distribution
+bin_distribution(trials = 5, prob = 0.5)
+```
+
+### bin_cumulative()
+###### This function calculates the distribution of the probability of getting at most k number of successes in n trials.
+
+```{r}
+# binomial cumulative distribution
+bin_cumulative(trials = 5, prob = 0.5)
+```
+
+
+### bin_var()
+###### This function calculates a list of the  binomial variables by inputting n trials and at a probability level.
+```{r}
+bin1 <- bin_variable(trials = 10, p = 0.3)
+bin1
+```
+
+```{r echo=FALSE}
+aux_mean <- function(trials,prob) {
+  multiply_trials_prob <- trials*prob
+  return(multiply_trials_prob)
+}
+  
+bin_mean <- function(trials, prob){
+  check_trials(trials)
+  check_prob(prob)
+  return(aux_mean(trials, prob))
+}
+
+aux_variance <- function(trials,prob) {
+  variance_trials_prob <- trials*prob*(1-prob)
+  return(variance_trials_prob)
+}
+
+bin_variance <- function(trials, prob){
+  check_trials(trials)
+  check_prob(prob)
+  return(aux_variance(trials, prob))
+}
+
+aux_mode <- function(trials,prob) {
+  mode_trials_prob <- floor(trials*prob + prob)
+  return(mode_trials_prob)
+}
+
+bin_mode <- function(trials, prob){
+  check_trials(trials)
+  check_prob(prob)
+  return(aux_mode(trials, prob))
+}
+
+aux_skewness <- function(trials,prob) {
+  skewness_trials_prob <- (1-(2*prob))/(sqrt(trials*prob*(1-prob)))
+  return(skewness_trials_prob)
+}
+
+bin_skewness <- function(trials, prob){
+  check_trials(trials)
+  check_prob(prob)
+  return(aux_skewness(trials, prob))
+}
+
+aux_kurtosis <- function(trials,prob) {
+  kurtosis_trials_prob <- ((1-6*prob)*(1-prob))/((trials*prob))*(1-prob)
+  return(kurtosis_trials_prob)
+}
+
+bin_kurtosis <- function(trials, prob){
+  check_trials(trials)
+  check_prob(prob)
+  return(aux_kurtosis(trials, prob))
+}
+
+```
+## Summary Functions
+### bin_mean()
+###### This calculates the mean of a binomial distribution.
+```{r}
+bin_mean(10, 0.3)
+```
+
+### bin_variance()
+###### This calculates the variance of a binomial distribution.
+```{r}
+bin_variance(10, 0.3)
+```
+
+### bin_mode()
+###### This calculates the variance of a binomial distribution.
+```{r}
+bin_mode(10, 0.3)
+```
+
+### bin_skewness()
+###### This calculates the skewness, or a measure of the asymmetry of the probability distribution of a random variable of a binomial distribution.
+```{r}
+bin_skewness(10, 0.3)
+```
+
+### bin_kurtosis()
+###### This calculates the skewness, or a measure of the “tailedness” of the probability distribution of a random variable of a binomial distribution.
+```{r}
+bin_kurtosis(10, 0.3)
+```
+
+
+
+
+
+## Method Functions
+### plot.bindis()
+###### This function creates a barplot the distribution of the probabilities for each number of successes.
+```{r}
+plot.bindis <- function(yes){
+  barplot(yes$probability, names.arg = yes$success, xlab = "successes", ylab = "probability")
+}
+
+# plotting binomial probability distribution
+dis1 <- bin_distribution(trials = 5, prob = 0.5)
+plot(dis1)
+
+```
+
+
+### plot.bincum()
+###### This function creates a line plot of the cumulative distribution of the probabilities for each number of successes.
+```{r}
+plot.bincum <- function(cum1){
+  plot(cum1$success, cum1$cumulative, type = "o")
+  lines(cum1$success, cum1$cumulative)
+}
+
+dis2 <- bin_cumulative(trials = 5, prob = 0.5)
+plot(dis2)
+```
+
+
+### print.binvar()
+###### This function prints the content of a list of the  binomial variables by inputting n trials and at a probability level.
+```{r}
+print.binvar <- function(x){
+  cat('"Binomial Variable"\n\n')
+  cat("Parameters\n", append = TRUE)
+  cat("-number of trials:", x$trials, append = TRUE)
+  cat("\n-probability:", x$prob, append = TRUE)
+}
+bin1 <- bin_variable(trials = 10, p = 0.3)
+bin1
+```
+
+
+### summary.binvar()
+###### This function contains a full summary description of an object "binvar". It includes the elements: trials, mean, variance, mode, skewness, kurtosis.
+```{r}
+summary.binvar <- function(x,...){
+  object1 <- list(trials = x$trials, prob = x$prob, mean = aux_mean(x$trials, x$prob), variance = aux_variance(x$trials, x$prob), mode = aux_mode(x$trials, x$prob), skewness = aux_skewness(x$trials, x$prob), kurtosis = aux_kurtosis(x$trials, x$prob) )
+  class(object1) = "summary.binvar"
+
+  return(object1)
+}
+bin_summary <- bin_variable(trials = 10, p = 0.3)
+bin_summary1 <- summary(bin_summary)
+bin_summary1
+```
+
+### print.summary.binvar()
+###### This function prints the content and includes a full summary description of "summary.binvar".
+```{r}
+print.summary.binvar <- function(x){
+  cat('"Summary Binomial"\n\n')
+  cat("Parameters\n", append = TRUE)
+  cat("-number of trials:", x$trials, append = TRUE)
+  cat("\n-prob of success:", x$prob, append = TRUE)
+  cat('\n\n"Measures"')
+  cat("\n-mean:", aux_mean(x$trials, x$prob), append = TRUE)
+  cat("\n-variance:", aux_variance(x$trials, x$prob), append = TRUE)
+  cat("\n-mode:", aux_mode(x$trials, x$prob), append = TRUE)
+  cat("\n-skewness:", aux_skewness(x$trials, x$prob), append = TRUE)
+  cat("\n-kurtosis:", aux_kurtosis(x$trials, x$prob), append = TRUE)
+}
+
+bin1 <- bin_variable(trials = 10, p = 0.3)
+binsum1 <- summary(bin1)
+binsum1
+
+```
