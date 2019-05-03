@@ -7,7 +7,7 @@
 
 ## Motivation
  
-#### This Binomial package calculates the probabilities of a Binomial random variable because it allows us to calculate the probabilities to find the number of successes in a fixed number of random trials performed under identical conditions (assuming a constant probability of success on each trial).
+#### This Binomial package calculates the probabilities of a Binomial random variable because it allows us to find the number of successes in a fixed number of random trials performed under identical conditions (assuming a constant probability of success on each trial).
 
 ## Installation
 # development version from GitHub:
@@ -22,7 +22,6 @@
 ## Usage: What this Package Contains
 
 #### This specific package contains 15 functions that the user can use, 10 of which are main functions, and 5 of which are method functions that support these main functions due to their plotting capabilities. Here is a list of what is provided:
-
 
 * Main Functions
     * `bin_choose()`
