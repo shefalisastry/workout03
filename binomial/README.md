@@ -28,5 +28,5 @@
     * `print.summary.binvar()`
 
 
-### R Package Deliverable: [R Binomial Package](https://github.com/shefalisastry/workout03/tree/master/binomial)
+### Workout 3 Project Deliverable: [R Binomial Package](https://github.com/shefalisastry/workout03/tree/master/binomial)
 
