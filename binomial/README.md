@@ -28,5 +28,5 @@
     * `print.summary.binvar()`
 
 
-### R Package Deliverable: [Savings-Investings Modalities: An Interactive Visualization](https://shefalis.shinyapps.io/workout02app-shefali-sastry/)
+### R Package Deliverable: [R Binomial Package](https://github.com/shefalisastry/workout03/tree/master/binomial)
 
