@@ -116,7 +116,6 @@ bin_distribution(trials = 5, prob = 0.5)
 bin_cumulative(trials = 5, prob = 0.5)
 ```
 
-
 ### bin_var()
 ###### This function calculates a list of the  binomial variables by inputting n trials and at a probability level.
 ```{r}
@@ -211,9 +210,6 @@ bin_skewness(10, 0.3)
 ```{r}
 bin_kurtosis(10, 0.3)
 ```
-
-
-
 
 
 ## Method Functions
