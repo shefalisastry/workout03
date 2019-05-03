@@ -14,10 +14,10 @@
 `install.packages("devtools")` 
 
 # install "binomial" (without vignettes)
-`devtools::install_github("shefalisastry/workout03_binomial")`
+`devtools::install_github("shefalisastry/workout03")`
 
 # install "cointoss" (with vignettes)
-`devtools::install_github("shefalisastry/workout03_binomial", build_vignettes = TRUE)`
+`devtools::install_github("shefalisastry/workout03", build_vignettes = TRUE)`
 
 ## Usage: What this Package Contains
 
