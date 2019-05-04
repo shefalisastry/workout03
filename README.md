@@ -5,6 +5,8 @@
 
 #### This Workout was created for the STAT 133 class. The work here is a package called `binomial` which I created for our Workout 3 assignment.
 
+### Workout 3 Project Deliverable: [R Binomial Package](https://github.com/shefalisastry/workout03)
+
 ## Motivation
  
 #### This Binomial package calculates the probabilities of a Binomial random variable because it allows us to find the number of successes in a fixed number of random trials performed under identical conditions (assuming a constant probability of success on each trial).
@@ -37,7 +39,3 @@
     * `print.binvar()`
     * `summary.binvar()`
     * `print.summary.binvar()`
-
-
-### Workout 3 Project Deliverable: [R Binomial Package](https://github.com/shefalisastry/workout03)
-
